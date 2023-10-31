@@ -1,8 +1,13 @@
 {
-  "name": "my-qwik-basic-starter",
-  "description": "Demo App with Routing built-in (recommended)",
+  "name": "qwik.cz",
+  "description": "Web qwik.cz",
   "engines": {
     "node": ">=15.0.0"
+  },
+  "author": {
+    "name": "Jan Holík",
+    "email": "jh@boziweb.cz",
+    "url": "https://www.linkedin.com/in/jan-holik"
   },
   "private": true,
   "trustedDependencies": [

@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { QwikHead } from "./qwikHead";
-import { Paragraph, T_ParagraphVariant } from "./paragraph";
+import { Paragraph, T_ParagraphVariant } from "../basic/paragraph";
 
 export const QwikInfo = component$(() => (
   <section class="bg-violet-50 py-8">

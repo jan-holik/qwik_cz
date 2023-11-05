@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 
 export const QwikHead = component$(() => (
-  <div class="container m-auto text-center">
+  <div class="container m-auto text-center pb-8">
     <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl xl:px-48">
       Qwik je jako React, ale novější, rychlejší, geniální!
     </h1>

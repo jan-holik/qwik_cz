@@ -8,6 +8,11 @@ import { RouterHead } from "./components/router-head/router-head";
 
 import "./global.css";
 
+export const appInfo = {
+  websiteName: "Český Qwik",
+  langCode: "cs-CZ"
+};
+
 export default component$(() => {
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
@@ -24,7 +29,7 @@ export default component$(() => {
         <RouterHead />
         <ServiceWorkerRegister />
       </head>
-      <body lang="cs-CZ">
+      <body lang={appInfo.langCode}>
         <RouterOutlet />
       </body>
     </QwikCityProvider>

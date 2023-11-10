@@ -1,6 +1,5 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
-import { useUrl } from "~/hooks/useUrl";
+import { Link, useLocation } from "@builder.io/qwik-city";
 import { appInfo } from "~/root";
 import { clsx } from "clsx";
 import cx from "~/utils/cx";
@@ -17,17 +16,16 @@ enum T_NavbarLinkVariant {
 
 const navbarStaticData: T_NavbarLinks = [
   { text: "Úvod", path: "/" },
-  { text: "Generátor hesla", path: "/heslo" },
-  { text: "E-mail zdarma", path: "/email" },
-  { text: "Projekt", path: "/project" },
+  { text: "Generátor hesla", path: "/heslo/" },
+  { text: "E-mail zdarma", path: "/email/" },
+  { text: "Projekt", path: "/projekt/" },
 ];
 
 export const Navbar = component$<{ links?: T_NavbarLinks }>(
   ({ links = navbarStaticData }) => {
     const expanded = useSignal(false);
-    const url = useUrl();
-    const handleCloseExpanded = $(() => expanded.value = false);
-
+    const loc = useLocation();
+    const handleCloseExpanded = $(() => (expanded.value = false));
     const linkVariantTailwind = [
       `
       block
@@ -67,11 +65,11 @@ export const Navbar = component$<{ links?: T_NavbarLinks }>(
     return (
       <nav class="border-b-4 border-gray-200 border-b-violet-900 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
         <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-          <a href="#" class="flex items-center">
+          <Link href="/" class="flex items-center">
             <span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
               {appInfo.websiteName}
             </span>
-          </a>
+          </Link>
           <button
             data-collapse-toggle="navbar-solid-bg"
             type="button"
@@ -105,8 +103,8 @@ export const Navbar = component$<{ links?: T_NavbarLinks }>(
             id="navbar-solid-bg"
           >
             <ul class="mt-4 flex flex-col rounded-lg bg-gray-50 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:dark:bg-transparent">
-              {links.map(({ text, path }) => {
-                const currentPage = url.isCurrentPage(path);
+              {!loc.isNavigating && links.map(({ text, path }) => {
+                const currentPage = loc.url.pathname === path;
                 const ariaCurrent = currentPage && "page";
                 const computedClass = cx`${
                   currentPage

@@ -54,7 +54,7 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
   ({ links = footerStaticData }) => {
     const url = useUrl();
     return (
-      <footer class="border-t-4 border-t-violet-900 bg-gray-100 dark:bg-gray-900">
+      <footer class="mt-auto border-t-2 border-t-violet-900 bg-gray-100 dark:bg-gray-900">
         <div class="mx-auto w-full max-w-screen-xl">
           <div class="grid grid-cols-2 gap-8 px-4 py-6 md:grid-cols-4 lg:py-8">
             {links.map((section) => (

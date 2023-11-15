@@ -64,9 +64,15 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
                 </h2>
                 <ul class="font-medium text-gray-500 dark:text-gray-400">
                   {section.links.map(
-                    ({ text, class: className, href, target, ...props }) => {
+                    async ({
+                      text,
+                      class: className,
+                      href,
+                      target,
+                      ...props
+                    }) => {
                       if (href && !target) {
-                        if (url.isExternalURL(href)) {
+                        if (await url.isExternalURL$(href)) {
                           target = "_blank";
                         }
                       }

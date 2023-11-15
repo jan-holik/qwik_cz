@@ -1,66 +1,93 @@
-import { $, component$, useSignal } from "@builder.io/qwik";
-import { Link, useLocation } from "@builder.io/qwik-city";
+import { $, component$, useSignal, useTask$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import { appInfo } from "~/root";
 import { clsx } from "clsx";
 import cx from "~/utils/cx";
+import { useUrl } from "~/hooks/useUrl";
 
-type T_NavbarLinks = {
+type T_NavbarLink = {
   text: string;
   path: `/${string}`;
-}[];
+};
 
 enum T_NavbarLinkVariant {
   Inactive,
   Active,
 }
 
-const navbarStaticData: T_NavbarLinks = [
+const navbarStaticData: T_NavbarLink[] = [
   { text: "Úvod", path: "/" },
-  { text: "Generátor hesla", path: "/heslo/" },
-  { text: "E-mail zdarma", path: "/email/" },
-  { text: "Projekt", path: "/projekt/" },
+  { text: "Generátor hesla", path: "/heslo" },
+  { text: "E-mail zdarma", path: "/email" },
+  { text: "Projekt", path: "/projekt" },
 ];
 
-export const Navbar = component$<{ links?: T_NavbarLinks }>(
+const linkVariantTailwind = [
+  cx`
+  block
+  rounded
+  py-2
+  pl-3
+  pr-4
+  text-gray-900
+  hover:bg-gray-100
+  dark:text-white
+  dark:hover:bg-gray-700
+  dark:hover:text-white
+  md:border-0
+  md:p-0
+  md:hover:bg-transparent
+  md:hover:text-blue-700
+  md:dark:hover:bg-transparent
+  md:dark:hover:text-blue-500
+  `,
+  cx`
+  block
+  rounded
+  bg-blue-700
+  py-2
+  pl-3
+  pr-4
+  text-white
+  dark:bg-blue-600
+  md:bg-transparent
+  md:p-0
+  md:text-blue-700
+  md:dark:bg-transparent
+  md:dark:text-blue-500
+  `,
+];
+
+export const Navbar = component$<{ links?: T_NavbarLink[] }>(
   ({ links = navbarStaticData }) => {
     const expanded = useSignal(false);
-    const loc = useLocation();
+    const { isCurrentPath$, loc } = useUrl();
     const handleCloseExpanded = $(() => (expanded.value = false));
-    const linkVariantTailwind = [
-      `
-      block
-      rounded
-      py-2
-      pl-3
-      pr-4
-      text-gray-900
-      hover:bg-gray-100
-      dark:text-white
-      dark:hover:bg-gray-700
-      dark:hover:text-white
-      md:border-0
-      md:p-0
-      md:hover:bg-transparent
-      md:hover:text-blue-700
-      md:dark:hover:bg-transparent
-      md:dark:hover:text-blue-500
-      `,
-      `
-      block
-      rounded
-      bg-blue-700
-      py-2
-      pl-3
-      pr-4
-      text-white
-      dark:bg-blue-600
-      md:bg-transparent
-      md:p-0
-      md:text-blue-700
-      md:dark:bg-transparent
-      md:dark:text-blue-500
-      `,
-    ];
+
+    const computedLinks = useSignal<(T_NavbarLink & { current?: boolean })[]>(
+      [],
+    );
+
+    useTask$(async ({ track }) => {
+      track(() => loc.isNavigating);
+
+      const computedCurrentPath = (links: T_NavbarLink[]) => {
+        return Promise.all(
+          links.map(async ({ path, ...rest }) => {
+            const current = await isCurrentPath$(path);
+            return {
+              path,
+              current,
+              ...rest,
+            };
+          }),
+        );
+      };
+
+      if (!loc.isNavigating) {
+        computedLinks.value = await computedCurrentPath(links);
+      }
+    });
 
     return (
       <nav class="border-b-4 border-gray-200 border-b-violet-900 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
@@ -103,24 +130,30 @@ export const Navbar = component$<{ links?: T_NavbarLinks }>(
             id="navbar-solid-bg"
           >
             <ul class="mt-4 flex flex-col rounded-lg bg-gray-50 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:dark:bg-transparent">
-              {!loc.isNavigating && links.map(({ text, path }) => {
-                const currentPage = loc.url.pathname === path;
-                const ariaCurrent = currentPage && "page";
-                const computedClass = cx`${
-                  currentPage
-                    ? linkVariantTailwind[T_NavbarLinkVariant.Active]
-                    : linkVariantTailwind[T_NavbarLinkVariant.Inactive]
-                }`;
+              {computedLinks.value.map(({ path, text, current }) => {
+                const computedClass = current
+                  ? linkVariantTailwind[T_NavbarLinkVariant.Active]
+                  : linkVariantTailwind[T_NavbarLinkVariant.Inactive];
                 return (
                   <li key={path}>
-                    <Link
-                      href={path}
-                      class={computedClass}
-                      aria-current={ariaCurrent}
-                      onClick$={handleCloseExpanded}
-                    >
-                      {text}
-                    </Link>
+                    {current ? (
+                      <Link
+                        href={path}
+                        class={computedClass}
+                        aria-current="page"
+                        onClick$={handleCloseExpanded}
+                      >
+                        {text}
+                      </Link>
+                    ) : (
+                      <Link
+                        href={path}
+                        class={computedClass}
+                        onClick$={handleCloseExpanded}
+                      >
+                        {text}
+                      </Link>
+                    )}
                   </li>
                 );
               })}

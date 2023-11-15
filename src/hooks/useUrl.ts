@@ -1,18 +1,25 @@
+import { $ } from "@builder.io/qwik";
 import { useLocation, z } from "@builder.io/qwik-city";
+import { pathnameUnification } from "~/utils/url";
 
 export const useUrl = () => {
   const loc = useLocation();
 
-  const schemaUrl = z.string().url();
+  const isExternalURL$ = $((url: string): boolean => {
+    const schemaUrl = z.string().url();
+    return (
+      schemaUrl.safeParse(url).success && new URL(url).origin !== loc.url.origin
+    );
+  });
 
-  const isExternalURL = (url: string): boolean =>
-    schemaUrl.safeParse(url).success && new URL(url).origin !== loc.url.origin;
-
-  const isCurrentPage = (pathname: string): boolean =>
-    pathname === loc.url.pathname;
+  const isCurrentPath$ = $(
+    (pathname: string): boolean =>
+      pathnameUnification(pathname) === pathnameUnification(loc.url.pathname),
+  );
 
   return {
-    isExternalURL,
-    isCurrentPage,
+    loc,
+    isExternalURL$,
+    isCurrentPath$,
   };
 };

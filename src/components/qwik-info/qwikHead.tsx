@@ -5,7 +5,7 @@ export const QwikHead = component$(() => (
     <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl xl:px-48">
       Qwik je jako React, ale novější, rychlejší, geniální!
     </h1>
-    <p class="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-xl xl:px-48">
+    <p class="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400 px-4 sm:px-16 lg:text-xl xl:px-48">
       TypeScript framework Qwik je založený na JSX, stejně jako React a podporuje jeho nejmodernější patterny jako Signals, Hooks a další.
       Místo hydratace, ale využívá lazy-loading umožněný serializací kódu, což mu umožňuje neuvěřitelnou rychlost.
       Zní to sice složitě, ale není to tak těžké. Za vším stojí jediný znak: $.

@@ -8,7 +8,7 @@ export const QwikInfo = component$(() => (
     <div class="container m-auto">
       <Paragraph
         variant={T_ParagraphVariant.FirstLetter}
-        class="bg-white py-6 sm:px-16 xl:px-48"
+        class="bg-white py-6 px-4 sm:px-16 xl:px-48"
       >
         Qwik Ti vydělá více peněz! Rychlost webové aplikace (webu) je zásadní
         pro její obchodní výkon. Rychlejší weby dosahují lepších výsledků ve
@@ -25,7 +25,7 @@ export const QwikInfo = component$(() => (
 
       <Paragraph
         variant={T_ParagraphVariant.Leading}
-        class="bg-white py-6 sm:px-16 xl:px-48"
+        class="bg-white py-6 px-4 sm:px-16 xl:px-48"
       >
         Když se podíváš na pracovní portály, pravděpodobně nenajdeš pro Qwik
         žádné pracovní poptávky. Qwik se také neučí na žádných školách v ČR. To
@@ -37,7 +37,7 @@ export const QwikInfo = component$(() => (
         odměna.
       </Paragraph>
 
-      <Paragraph class="bg-white py-6 sm:px-16 xl:px-48">
+      <Paragraph class="bg-white py-6 px-4 sm:px-16 xl:px-48">
         Za Qwikem stojí původní tvůrce známého Angularu a exGoogler, Miško
         Hevery, který nyní zastává pozici CTO ve společnosti Builder.io, Inc.
         sídlící v Silicon Valley. Kromě geniálních technologických řešení, s

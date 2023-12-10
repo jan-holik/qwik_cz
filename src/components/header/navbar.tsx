@@ -15,7 +15,7 @@ enum T_NavbarLinkVariant {
   Active,
 }
 
-const navbarStaticData: T_NavbarLink[] = [
+export const navbarStaticData: T_NavbarLink[] = [
   { text: "Úvod", path: "/" },
   { text: "Generátor hesla", path: "/heslo" },
   { text: "E-mail zdarma", path: "/email" },

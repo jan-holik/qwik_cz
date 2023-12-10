@@ -1,6 +1,8 @@
 import { component$, QwikIntrinsicElements } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import { clsx } from "clsx";
 import { useUrl } from "~/hooks/useUrl";
+import { navbarStaticData } from "../header/navbar";
 
 type T_FooterLinkSections = {
   title: string;
@@ -22,31 +24,8 @@ const footerStaticData: T_FooterLinkSections = [
     ],
   },
   {
-    title: "Help center",
-    links: [
-      { text: "Discord Server", href: "" },
-      { text: "Twitter", href: "" },
-      { text: "Facebook", href: "" },
-      { text: "Contact Us", href: "" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { text: "Privacy Policy", href: "" },
-      { text: "Licensing", href: "" },
-      { text: "Facebook", href: "" },
-      { text: "Terms & Conditions", href: "" },
-    ],
-  },
-  {
-    title: "Download",
-    links: [
-      { text: "iOS", href: "" },
-      { text: "Android", href: "" },
-      { text: "Windows", href: "" },
-      { text: "MacOS", href: "#" },
-    ],
+    title: "Qwik.cz",
+    links: navbarStaticData.map(({ text, path }) => ({ text, href: path })),
   },
 ];
 
@@ -71,21 +50,26 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
                       target,
                       ...props
                     }) => {
-                      if (href && !target) {
-                        if (await url.isExternalURL$(href)) {
-                          target = "_blank";
-                        }
-                      }
+                      const computedClass = clsx([
+                        "hover:underline",
+                        className,
+                      ]);
                       return (
                         <li key={text} class="mb-4">
-                          <a
-                            href={href}
-                            target={target}
-                            class={clsx(["hover:underline", className])}
-                            {...props}
-                          >
-                            {text}
-                          </a>
+                          {href && (await url.isExternalURL$(href)) ? (
+                            <a
+                              href={href}
+                              target="_blank"
+                              class={computedClass}
+                              {...props}
+                            >
+                              {text}
+                            </a>
+                          ) : (
+                            <Link href={href} class={computedClass} {...props}>
+                              {text}
+                            </Link>
+                          )}
                         </li>
                       );
                     },

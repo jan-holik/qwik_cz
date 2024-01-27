@@ -3,7 +3,9 @@ import cx from "~/utils/cx";
 
 export type T_Input = {
   variant?: T_InputVariant;
-} & Omit<QwikIntrinsicElements["input"], "children">;
+} & Omit<QwikIntrinsicElements["input"], "children"> & {
+  onInput$?: QwikIntrinsicElements["input"]["onInput$"]
+};
 
 export enum T_InputVariant {
   Default,
@@ -77,9 +79,17 @@ export const Input = component$<T_Input>(
     `;
 
     return (
-      <label class="block text-sm font-medium text-gray-900 dark:text-white">
+      <label class="block text-sm font-medium text-gray-900 dark:text-white max-w-max">
         <Slot />
-        <input type="text" class={computedClass} {...props} />
+        {props["bind:value"] ? (
+          <input
+            class={computedClass}
+            bind:value={props["bind:value"]}
+            {...props}
+          />
+        ) : (
+          <input class={computedClass} {...props}/>
+        )}
       </label>
     );
   },

@@ -32,7 +32,7 @@ enum T_ButtonSize {
 }
 
 export const Button = component$<T_Button>(
-  ({ type = "button", class: className, variant, ...props }) => {
+  ({ type = "button", class: className, variant, disabled, ...props }) => {
     const setVariant: Required<T_Button["variant"]> = Object.assign(
       {},
       {
@@ -50,6 +50,8 @@ export const Button = component$<T_Button>(
       text-center
       ${variantButtonColorTailwind[setVariant.color]}
       ${variantButtonSizeTailwind[setVariant.size]}
+      ${disabled ? "cursor-not-allowed bg-opacity-70 hover:bg-opacity-70" : ""}
+      ${className}
     `;
 
     return (

@@ -1,5 +1,6 @@
 import { useSignal, $, useVisibleTask$ } from "@builder.io/qwik";
 import { T_Charset, getPassword, updateSets } from "~/utils/password";
+import { useUrl } from "./useUrl";
 
 export const usePassword = () => {
   const password = useSignal("");
@@ -9,9 +10,12 @@ export const usePassword = () => {
     T_Charset.Number,
   ]);
 
-  useVisibleTask$(() => {
+  const { loc } = useUrl();
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ track }) => {
+    track(() => loc.isNavigating);
     const storageCharset = localStorage.getItem("charset");
-    if (storageCharset) {
+    if (storageCharset && !loc.isNavigating) {
       characterSet.value = JSON.parse(storageCharset) as T_Charset[];
     }
   });
@@ -20,8 +24,9 @@ export const usePassword = () => {
     password,
     characterSet,
     update$: $((set: T_Charset) => {
-      characterSet.value = updateSets(set, characterSet.value);
-      localStorage.setItem("charset", JSON.stringify(characterSet.value))
+      const newCharset = updateSets(set, characterSet.value);
+      characterSet.value = newCharset;
+      localStorage.setItem("charset", JSON.stringify(newCharset));
     }),
     getPassword$: $(
       (power: number) =>

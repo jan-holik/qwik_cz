@@ -3,9 +3,9 @@ import cx from "~/utils/cx";
 
 export type T_Input = {
   variant?: T_InputVariant;
-} & Omit<QwikIntrinsicElements["input"], "children"> & {
-  onInput$?: QwikIntrinsicElements["input"]["onInput$"]
-};
+  inputAttributes?: QwikIntrinsicElements["input"];
+  labelAttributes?: QwikIntrinsicElements["label"];
+}
 
 export enum T_InputVariant {
   Default,
@@ -14,7 +14,7 @@ export enum T_InputVariant {
 }
 
 export const Input = component$<T_Input>(
-  ({ class: className, variant = T_InputVariant.Default, ...props }) => {
+  ({variant = T_InputVariant.Default, inputAttributes, labelAttributes }) => {
     const variantTailwind = [
       `
       bg-gray-50
@@ -72,23 +72,33 @@ export const Input = component$<T_Input>(
       `,
     ];
 
-    const computedClass = cx`
+    const computedClassInput = cx`
       mt-2
       ${variantTailwind[variant]}
-      ${className}
+      ${inputAttributes?.class}
     `;
 
+    const computedClassLabel = cx`
+      block
+      text-sm
+      font-medium
+      text-gray-900
+      dark:text-white
+      ${labelAttributes?.class}
+    `;
+
+
     return (
-      <label class="block text-sm font-medium text-gray-900 dark:text-white max-w-max">
+      <label class={computedClassLabel} {...labelAttributes}>
         <Slot />
-        {props["bind:value"] ? (
+        {inputAttributes?.["bind:value"] ? (
           <input
-            class={computedClass}
-            bind:value={props["bind:value"]}
-            {...props}
+            class={computedClassInput}
+            bind:value={inputAttributes?.["bind:value"]}
+            {...inputAttributes}
           />
         ) : (
-          <input class={computedClass} {...props}/>
+          <input class={computedClassInput} {...inputAttributes}/>
         )}
       </label>
     );

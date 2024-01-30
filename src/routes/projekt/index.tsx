@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
+import { Paragraph, T_ParagraphVariant } from "~/components/basic/paragraph";
 
 const Project = component$(() => {
   return (
@@ -10,6 +11,30 @@ const Project = component$(() => {
           Český Qwik
         </strong>
       </h1>
+
+      <Paragraph
+        variant={T_ParagraphVariant.FirstLetter}
+        class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48"
+      >
+        Projekt “Český Qwik” vznikl pro podporu TypeScript frameworku Qwik v
+        češtině a zároveň pro podporu českých a slovenských vývojářů,
+        zajímajících se o Qwik, v jejich rodném (nebo blízkém) jazyce.
+      </Paragraph>
+
+      <Paragraph
+        variant={T_ParagraphVariant.Leading}
+        class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48"
+      >
+        Tento projekt (zatím) nijak nespolupracuje se společností Builder.io,
+        Inc., vytvářející framework Qwik a veškeré dostupné informace, postupy a
+        kódy nejsou oficiálně schválené.
+      </Paragraph>
+
+      <Paragraph class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48">
+        Tvůrcem tohoto projektu je Jan Holík, IČO: 06518435, Na pláni 2861/13,
+        150 00 Praha 5 - Smíchov. Fyzická osoba zapsaná v živnostenském
+        rejstříku.
+      </Paragraph>
     </section>
   );
 });

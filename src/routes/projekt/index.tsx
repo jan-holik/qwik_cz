@@ -25,6 +25,40 @@ const Project = component$(() => {
         variant={T_ParagraphVariant.Leading}
         class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48"
       >
+        Tento projekt je nasazen na{" "}
+        <a
+          href="https://vercel.com"
+          target="_blank"
+          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
+        >
+          Vercel
+        </a>
+        , pro stylování využívá{" "}
+        <a
+          href="https://tailwindcss.com"
+          target="_blank"
+          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
+        >
+          Tailwind CSS
+        </a>{" "}
+        a vlastní dynamické komponenty postavené na základě volně dostupných
+        HTML kódů{" "}
+        <a
+          href="https://flowbite.com"
+          target="_blank"
+          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
+        >
+          Flowbite
+        </a>
+        , ovšem s vlastním TypeScriptem a logikou. Tyto mezi vývojáři oblíbené
+        technologie byly zvoleny k demonstraci běžného použití Qwiku a snadného
+        vývoje i nasazení projektu.
+      </Paragraph>
+
+      <Paragraph
+        variant={T_ParagraphVariant.Leading}
+        class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48"
+      >
         Tento projekt (zatím) nijak nespolupracuje se společností Builder.io,
         Inc., vytvářející framework Qwik a veškeré dostupné informace, postupy a
         kódy nejsou oficiálně schválené.

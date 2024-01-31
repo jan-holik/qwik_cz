@@ -6,7 +6,7 @@
   },
   "author": {
     "name": "Jan Holík",
-    "email": "jh@boziweb.cz",
+    "email": "jan.holik@qwik.cz",
     "url": "https://www.linkedin.com/in/jan-holik"
   },
   "private": true,
@@ -50,7 +50,6 @@
     "vite-tsconfig-paths": "^4.3.1"
   },
   "dependencies": {
-    "@pnpm/core": "^13.4.2",
     "clsx": "^2.1.0",
     "sharp": "^0.33.2"
   }

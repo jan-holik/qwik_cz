@@ -87,7 +87,7 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
             </span>
             <div class="mt-4 flex space-x-5 sm:justify-center md:mt-0">
               <a
-                href="#"
+                href="https://discord.gg/JWqNDvuSYN"
                 class="text-gray-400 hover:text-gray-900 dark:hover:text-white"
               >
                 <svg

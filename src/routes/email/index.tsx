@@ -17,10 +17,25 @@ const Email = component$(() => {
         class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48"
       >
         E-mail ve tvaru jmeno.prijmeni@qwik.cz můžeš mít zcela zdarma! Stačí si
-        o něj napsat na Discrordu, LinkedInu nebo e-mailem na adresu jan.holik
-        na této doméně. Jedinou podmínkou je používat e-mail seriózně,
-        nepoškozovat dobré jméno Qwik.cz, nerozesílat SPAM a mít pozitivní
-        postoj k frameworku Qwik.
+        o něj napsat na{" "}
+        <a
+          href="https://discord.gg/JWqNDvuSYN"
+          target="_blank"
+          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
+        >
+          Discrordu
+        </a>
+        ,{" "}
+        <a
+          href="https://www.linkedin.com/in/jan-holik/"
+          target="_blank"
+          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
+        >
+          LinkedInu
+        </a>{" "}
+        nebo e-mailem na adresu jan.holik na této doméně. Jedinou podmínkou je
+        používat e-mail seriózně, nepoškozovat dobré jméno Qwik.cz, nerozesílat
+        SPAM a mít pozitivní postoj k frameworku Qwik.
       </Paragraph>
 
       <Paragraph
@@ -28,12 +43,19 @@ const Email = component$(() => {
         class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48"
       >
         E-mail s vlastním jménem na doméně @qwik.cz technicky běží na české
-        službě E-Mail Profi od Seznamu, takže Tě čeká známé rozhraní, datově
-        neomezená velikost schránky, možnost využívat SMTP, POP3 a IMAP protokol
-        a všechno ostatní, co Seznam nabízí. Díky tomu můžeš svoji novou
-        e-mailovou schránku pohodlně používat na všech zařízeních nebo si ji
-        nechat synchronizovat do své stávající e-mailové schránky například na
-        Gmailu nebo jinde.
+        službě{" "}
+        <a
+          href="https://emailprofi.cz"
+          target="_blank"
+          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
+        >
+          E-Mail Profi od Seznamu
+        </a>
+        , takže Tě čeká známé rozhraní, datově neomezená velikost schránky,
+        možnost využívat SMTP, POP3 a IMAP protokol a všechno ostatní, co Seznam
+        nabízí. Díky tomu můžeš svoji novou e-mailovou schránku pohodlně
+        používat na všech zařízeních nebo si ji nechat synchronizovat do své
+        stávající e-mailové schránky například na Gmailu nebo jinde.
       </Paragraph>
 
       <Paragraph class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48">

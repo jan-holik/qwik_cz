@@ -9,7 +9,7 @@ export const Banner = component$(() => (
         <span>
           🤝 Český Qwik na Discordu: Rosteme sdílením.{" "}
           <a
-            href="https://flowbite.com"
+            href="https://discord.gg/JWqNDvuSYN"
             target="_blank"
             class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
           >

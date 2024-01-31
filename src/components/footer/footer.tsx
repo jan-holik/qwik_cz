@@ -1,4 +1,4 @@
-import { component$, QwikIntrinsicElements } from "@builder.io/qwik";
+import { component$, type QwikIntrinsicElements } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import { clsx } from "clsx";
 import { useUrl } from "~/hooks/useUrl";
@@ -47,7 +47,6 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
                       text,
                       class: className,
                       href,
-                      target,
                       ...props
                     }) => {
                       const computedClass = clsx([

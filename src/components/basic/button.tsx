@@ -1,4 +1,4 @@
-import { QwikIntrinsicElements, Slot, component$ } from "@builder.io/qwik";
+import { type QwikIntrinsicElements, Slot, component$ } from "@builder.io/qwik";
 import {
   variantButtonColorTailwind,
   variantButtonSizeTailwind,

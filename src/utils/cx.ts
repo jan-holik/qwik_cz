@@ -1,4 +1,4 @@
-import clsx, { ClassValue } from 'clsx';
+import clsx, { type ClassValue } from 'clsx';
 
 type TemplateLike = TemplateStringsArray | ClassValue
 type ParamsLike = ClassValue[]

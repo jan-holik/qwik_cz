@@ -1,6 +1,6 @@
 import { component$, $, useSignal, useTask$ } from "@builder.io/qwik";
 import { isBrowser } from "@builder.io/qwik/build";
-import { DocumentHead } from "@builder.io/qwik-city";
+import { type DocumentHead } from "@builder.io/qwik-city";
 import { Button } from "~/components/basic/button";
 import { Input } from "~/components/basic/input";
 import { Paragraph } from "~/components/basic/paragraph";

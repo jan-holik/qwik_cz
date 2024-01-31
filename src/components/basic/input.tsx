@@ -1,4 +1,4 @@
-import { QwikIntrinsicElements, Slot, component$ } from "@builder.io/qwik";
+import { type QwikIntrinsicElements, Slot, component$ } from "@builder.io/qwik";
 import cx from "~/utils/cx";
 
 export type T_Input = {
@@ -94,7 +94,7 @@ export const Input = component$<T_Input>(
         {inputAttributes?.["bind:value"] ? (
           <input
             class={computedClassInput}
-            bind:value={inputAttributes?.["bind:value"]}
+            bind:value={inputAttributes["bind:value"]}
             {...inputAttributes}
           />
         ) : (

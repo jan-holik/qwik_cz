@@ -25,22 +25,22 @@ const getChar = (charset: string[][]) => {
 
 const shuffle = (array: string[]) => {
   for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
 };
 
 export const getPassword = (power: number, genSet: T_Charset[]): string => {
   const charset = genSet.map((set) => charsetArr[set]);
-  let passAr = [];
+  const passAr = [];
   if (!(genSet.length === 1 && genSet[0] === T_Charset.Emoji)) {
     for (let i = 0; i < charset.length; i++) {
-      let symbol = charset[i][maxRand(charset[i].length - 1)];
+      const symbol = charset[i][maxRand(charset[i].length - 1)];
       power = power - symbol.length;
       passAr.push(symbol);
     }
     while (power > 0) {
-      let symbol = getChar(charset);
+      const symbol = getChar(charset);
       if (symbol.length <= power) {
         power = power - symbol.length;
         passAr.push(symbol);
@@ -48,7 +48,7 @@ export const getPassword = (power: number, genSet: T_Charset[]): string => {
     }
   } else {
     while (power > 0) {
-      let symbol = charset[0][maxRand(charset[0].length - 1)];
+      const symbol = charset[0][maxRand(charset[0].length - 1)];
       if (symbol.length <= power) {
         power = power - symbol.length;
         passAr.push(symbol);

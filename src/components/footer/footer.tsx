@@ -17,7 +17,7 @@ const footerStaticData: T_FooterLinkSections = [
   {
     title: "Technologie",
     links: [
-      { text: "Qwik", href: "https://qwik.builder.io" },
+      { text: "Qwik", href: "https://qwik.dev/" },
       { text: "Flowbite", href: "https://flowbite.com/" },
       { text: "Vercel", href: "https://vercel.com/" },
       { text: "Email Profi", href: "https://emailprofi.cz/" },

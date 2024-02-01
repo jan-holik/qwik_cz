@@ -11,7 +11,7 @@ export const QwikHead = component$(() => (
       Zní to sice složitě, ale není to tak těžké. Za vším stojí jediný znak: $.
     </p>
     <a
-      href="https://qwik.builder.io"
+      href="https://qwik.dev/"
       target="_blank"
       class="inline-flex items-center justify-center rounded-lg bg-blue-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
     >

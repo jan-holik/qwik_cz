@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { type DocumentHead } from "@builder.io/qwik-city";
+import { Anchor } from "~/components/basic/anchor";
 import { Paragraph, T_ParagraphVariant } from "~/components/basic/paragraph";
 
 const Project = component$(() => {
@@ -26,33 +27,13 @@ const Project = component$(() => {
         class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48"
       >
         Tento projekt je nasazen na{" "}
-        <a
-          href="https://vercel.com"
-          target="_blank"
-          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
-        >
-          Vercel
-        </a>
-        , pro stylování využívá{" "}
-        <a
-          href="https://tailwindcss.com"
-          target="_blank"
-          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
-        >
-          Tailwind CSS
-        </a>{" "}
-        a vlastní dynamické komponenty postavené na základě volně dostupných
-        HTML kódů{" "}
-        <a
-          href="https://flowbite.com"
-          target="_blank"
-          class="decoration-600 dark:decoration-500 inline font-medium text-blue-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-blue-500"
-        >
-          Flowbite
-        </a>
-        , ovšem s vlastním TypeScriptem a logikou. Tyto mezi vývojáři oblíbené
-        technologie byly zvoleny k demonstraci běžného použití Qwiku a snadného
-        vývoje i nasazení projektu.
+        <Anchor href="https://vercel.com">Vercel</Anchor>, pro stylování využívá{" "}
+        <Anchor href="https://tailwindcss.com">Tailwind CSS</Anchor> a vlastní
+        dynamické komponenty postavené na základě volně dostupných HTML kódů{" "}
+        <Anchor href="https://flowbite.com">Flowbite</Anchor>, ovšem s vlastním
+        TypeScriptem a logikou. Tyto mezi vývojáři oblíbené technologie byly
+        zvoleny k demonstraci běžného použití Qwiku a snadného vývoje i nasazení
+        projektu.
       </Paragraph>
 
       <Paragraph
@@ -65,9 +46,10 @@ const Project = component$(() => {
       </Paragraph>
 
       <Paragraph class="bg-gray-50 px-4 py-6 sm:px-16 xl:px-48">
-        Tvůrcem tohoto projektu je Jan Holík, IČO: 06518435, Na pláni 2861/13,
-        150 00 Praha 5 - Smíchov. Fyzická osoba zapsaná v živnostenském
-        rejstříku.
+        Tvůrcem tohoto projektu je{" "}
+        <Anchor href="https://www.linkedin.com/in/jan-holik/">Jan Holík</Anchor>
+        , IČO: 06518435, Na pláni 2861/13, 150 00 Praha 5 - Smíchov. Fyzická
+        osoba zapsaná v živnostenském rejstříku.
       </Paragraph>
     </section>
   );

@@ -3,6 +3,7 @@ import { Link } from "@builder.io/qwik-city";
 import { clsx } from "clsx";
 import { useUrl } from "~/hooks/useUrl";
 import { navbarStaticData } from "../header/navbar";
+import { Anchor } from "../basic/anchor";
 
 type T_FooterLinkSections = {
   title: string;
@@ -43,12 +44,7 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
                 </h2>
                 <ul class="font-medium text-gray-500 dark:text-gray-400">
                   {section.links.map(
-                    async ({
-                      text,
-                      class: className,
-                      href,
-                      ...props
-                    }) => {
+                    async ({ text, class: className, href, ...props }) => {
                       const computedClass = clsx([
                         "hover:underline",
                         className,
@@ -80,9 +76,9 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
           <div class="bg-gray-100 px-4 py-6 dark:bg-gray-700 md:flex md:items-center md:justify-between">
             <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
               S ❤️‍🔥 vytvořil{" "}
-              <a href="https://www.linkedin.com/in/jan-holik/" target="_blank">
+              <Anchor href="https://www.linkedin.com/in/jan-holik/">
                 Jan Holík
-              </a>
+              </Anchor>
               . Všechna práva vyhrazena.
             </span>
             <div class="mt-4 flex space-x-5 sm:justify-center md:mt-0">

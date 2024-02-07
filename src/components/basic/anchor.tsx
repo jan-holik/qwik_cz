@@ -37,16 +37,15 @@ export const Anchor = component$<T_Anchor>(
       ${className}
     `;
 
-    const updatedProps: T_Anchor = Object.assign(
-      {},
-      { ...props },
-      { class: computedClass },
-      { href },
-      { target: computedTarget.value },
-    );
-
     return (
-      <a {...updatedProps}>
+      <a
+        {...{
+          href,
+          target: computedTarget.value,
+          class: computedClass,
+          ...props,
+        }}
+      >
         <Slot />
       </a>
     );

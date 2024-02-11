@@ -4,6 +4,7 @@ import { clsx } from "clsx";
 import { useUrl } from "~/hooks/useUrl";
 import { navbarStaticData } from "../header/navbar";
 import { Anchor } from "../basic/anchor";
+import { version } from "@builder.io/qwik";
 
 type T_FooterLinkSections = {
   title: string;
@@ -78,6 +79,12 @@ export const Footer = component$<{ links?: T_FooterLinkSections }>(
               S ❤️‍🔥 vytvořil{" "}
               <Anchor href="https://www.linkedin.com/in/jan-holik/">
                 Jan Holík
+              </Anchor>{" "}
+              na frameworku <Anchor href="https://qwik.dev/">Qwik</Anchor> verze{" "}
+              <Anchor
+                href={`https://github.com/BuilderIO/qwik/releases/tag/v${version}`}
+              >
+                {version}
               </Anchor>
               . Všechna práva vyhrazena.
             </span>

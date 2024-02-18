@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "qwik-project-name",
-  "short_name": "Welcome to Qwik",
-  "start_url": ".",
+  "name": "qwik_cz",
+  "short_name": "Český Qwik",
+  "start_url": "https://qwik.cz/",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "A Qwik project app."
+  "description": "Qwik a Qwik City framework v češtině."
 }

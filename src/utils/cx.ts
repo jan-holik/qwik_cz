@@ -14,8 +14,13 @@ type ParamsLike = ClassValue[];
 const cx = (template: TemplateLike, ...params: ParamsLike): string => {
   if (typeof template === "string") return clsx(template, ...params);
 
-  const converted = Array.isArray(template) ? template : [template];
-  const merged = converted.join(" ") + params.join(" ");
+  const itemNarrow = (item: TemplateLike | ParamsLike) =>
+    Array.isArray(item) ? item.join(" ") : item;
+
+  const templateArray = Array.isArray(template) ? template : [template];
+  const templateString = templateArray.map((item) => itemNarrow(item));
+  const paramsString = params.map((item) => itemNarrow(item));
+  const merged = `${templateString.join(" ")} ${paramsString.join(" ")}`;
 
   return clsx(merged.replace(/\s+/g, " ").trim());
 };

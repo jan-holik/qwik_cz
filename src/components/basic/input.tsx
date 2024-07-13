@@ -79,26 +79,24 @@ export const Input = component$<T_Input>(
     `;
 
     const computedClassLabel = cx`
-      block
       text-sm
       font-medium
       text-gray-900
-      dark:text-white
       ${labelAttributes?.class}
     `;
 
 
     return (
-      <label class={computedClassLabel} {...labelAttributes}>
+      <label {...labelAttributes} class={computedClassLabel}> 
         <Slot />
         {inputAttributes?.["bind:value"] ? (
           <input
-            class={computedClassInput}
             bind:value={inputAttributes["bind:value"]}
+            class={computedClassInput}
             {...inputAttributes}
           />
         ) : (
-          <input class={computedClassInput} {...inputAttributes}/>
+          <input {...inputAttributes} class={computedClassInput} />
         )}
       </label>
     );

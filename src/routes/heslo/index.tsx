@@ -81,7 +81,7 @@ const Password = component$(() => {
 
   return (
     <section class="container m-auto flex flex-col items-center gap-6 py-8 text-center">
-      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl xl:px-48">
+      <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl xl:px-48 dark:text-white">
         Generátor hesla
       </h1>
       <Input
@@ -105,8 +105,9 @@ const Password = component$(() => {
             type: "checkbox",
             checked: handleChecked(charset),
             onInput$: handleInputChange(charset),
+            class: "self-center",
           }}
-          labelAttributes={{ class: "max-w-max" }}
+          labelAttributes={{ class: "flex flex-col items-center max-w-max" }}
         >
           {text}
         </Input>

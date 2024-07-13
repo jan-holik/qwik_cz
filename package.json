@@ -2,7 +2,7 @@
   "name": "qwik.cz",
   "description": "Web qwik.cz",
   "engines": {
-    "node": ">=15.0.0"
+    "node": ">=20.x"
   },
   "author": {
     "name": "Jan Holík",
